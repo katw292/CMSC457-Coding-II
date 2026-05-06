@@ -6,7 +6,13 @@ from qiskit import QuantumCircuit, QuantumRegister, ClassicalRegister
 # 3. Measure everything
 # Note: the result will be either "100" or "011" due to Qiskit's bit order
 def ghz_x_meas():
-	raise NotImplementedError()
+	qc = QuantumCircuit(3, 3)
+	qc.h(0)
+	qc.cx(0, 1)
+	qc.cx(0, 2)
+	qc.x(0)
+	qc.measure([0,1,2], [0,1,2])
+
 
 # Return a quantum circuit on 1 qubit
 # Apply an X gate if input x is True
