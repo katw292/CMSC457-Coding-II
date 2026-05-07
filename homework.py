@@ -61,10 +61,10 @@ def swap_charlie(qreg: QuantumRegister, creg: ClassicalRegister):
 # creg: register of 2 bits
 def swap_alice(qreg: QuantumRegister, creg: ClassicalRegister):
   qc = QuantumCircuit(qreg,creg)
-  if creg[0]:
-    qc.z(0)
-  if creg[1]:	
-     qc.x(0)
+  with qc.if_test((creg[0], 1)):
+    qc.z(qreg[0])
+  with qc.if_test((creg[1], 1)):
+    qc.x(qreg[0])
   return qc
 
 # Output a classical syndrome string based on the error Pauli
